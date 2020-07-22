@@ -18,19 +18,19 @@ class JokesController {
     }
 
     getOne(req, res) {
-        Joke.find( {_id: req.params.id} )
+        Joke.find( {_id: req.params._id} )
             .then( oneJoke => res.json( {joke: oneJoke} ))
             .catch( errors => res.json(errors) );
     }
 
     update(req, res) {
-        Joke.findByIdAndUpdate( {_id: req.params.id}, req.body)
+        Joke.findByIdAndUpdate( {_id: req.params._id}, req.body)
             .then( updatedJoke => res.json( {joke: updatedJoke} ))
             .catch( errors => res.json(errors));
     }
 
     delete(req, res) {
-        Joke.findByIdAndDelete( {_id: req.params.id} )
+        Joke.findByIdAndDelete( {_id: req.params._id} )
         .then( result => res.json( {result: result} ))
         .catch( errors => res.json(errors));
     }
